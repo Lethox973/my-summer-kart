@@ -1,1 +1,4 @@
 *.meta linguist-generated
+*.unity linguist-generated
+*.prefab linguist-generated
+*.asset linguist-generated
