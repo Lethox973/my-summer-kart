@@ -1,0 +1,17 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+MemoryCaptures/
+*.csproj
+*.unityproj
+*.sln
+*.user
+.vscode/
+.DS_Store
+*.pidb
+*.suo
+*.userprefs
+*.unitypackage
