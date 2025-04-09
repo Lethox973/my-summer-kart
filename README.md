@@ -30,8 +30,7 @@ Very early. Held together with duct tape and C#.
 
 ## 💾 How to Play (Eventually™)
 
-Right now? You don’t.  
-But soon: clone the repo, open in Unity, and start wrenching.
+Right now? You don’t.
 
 ---
 
