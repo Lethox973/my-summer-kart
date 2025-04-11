@@ -8,8 +8,13 @@ public class FirstPersonController : MonoBehaviour
     public float gravity = -9.8f;
     public float maxLookAngle = 80f;  // Maximum up/down rotation
 
+    public float normalFOV = 60f;
+    public float zoomedFOV = 40f;
+    public float zoomSpeed = 10f;
+
     [SerializeField] private Transform cameraTransform; // Reference to the camera's transform
 
+    private Camera playerCamera;  // Reference to the Camera component
     private CharacterController characterController;
     private Vector3 velocity;
     private bool isGrounded;
@@ -29,7 +34,17 @@ public class FirstPersonController : MonoBehaviour
                 cameraTransform = mainCam.transform;
             }
         }
-        
+
+        // Get the Camera component
+        if (cameraTransform != null)
+        {
+            playerCamera = cameraTransform.GetComponent<Camera>();
+            if (playerCamera != null)
+            {
+                playerCamera.fieldOfView = normalFOV;
+            }
+        }
+
         // Lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -81,6 +96,13 @@ public class FirstPersonController : MonoBehaviour
         else
         {
             Debug.LogWarning("No camera transform assigned to FirstPersonController!");
+        }
+
+        // Zoom in and out when pressing Left Ctrl
+        if (playerCamera != null)
+        {
+            float targetFOV = Input.GetKey(KeyCode.LeftControl) ? zoomedFOV : normalFOV;
+            playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);
         }
     }
 }
